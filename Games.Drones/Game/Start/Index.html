@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Start</title>
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/Drones.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Game of drones</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Start</a></li>
+                    <li><a href="/Game/Stats/Index.html">Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div ng-app="dronesApp" ng-controller="startCtrl" class="centerFrame">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Enter Players' Names</h2>
+                </div>
+            </div>
+
+            <form novalidate>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Player 1:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" ng-model="users.Player1" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Player 2:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" ng-model="users.Player2" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn" ng-click="addNewGame()">Start</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2017- Sara Gomez Application</p>
+        </footer>
+    </div>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+        <script src="../../Scripts/angular.min.js"></script>
+        <script src="../../Scripts/angular-route.min.js"></script>
+        <script src="../app.js"></script>
+        <script src="start.js"></script>
+        <script src="../Services/baseSvc.js"></script>
+        <script src="../Services/gameService.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Start</title>
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/Drones.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Game of drones</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Start</a></li>
+                    <li><a href="/Game/Stats/Index.html">Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div ng-app="dronesApp" ng-controller="statsCtrl" class="centerFrame">
+
+            <div>
+                <h3>Statistics</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        Name
+                    </div>
+                    <div class="col-md-4">
+                        Number of wins
+                    </div>
+                </div>
+                <div class="row" ng-repeat="item in stats | limitTo:totalDisplayed">
+                    <div class="col-md-8">
+                        {{item.Name}}
+                    </div>
+                    <div class="col-md-4">
+                        {{item.Count}}
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn" ng-click="loadMore()">Load more</button>
+
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2017- Sara Gomez Application</p>
+        </footer>
+    </div>
+        <script src="../../Scripts/angular.min.js"></script>
+        <script src="../../Scripts/angular-route.min.js"></script>
+        <script src="../app.js"></script>
+        <script src="Stats.js"></script>
+        <script src="../Services/baseSvc.js"></script>
+        <script src="../Services/gameService.js"></script>
+</body>
+</html>

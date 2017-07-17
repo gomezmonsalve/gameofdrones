@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Start</title>
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/Drones.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Game of drones</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Start</a></li>
+                    <li><a href="/Game/Stats/Index.html">Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div ng-app="dronesApp" ng-controller="roundCtrl" class="centerFrame">
+
+            <div class="row" ng-hide="playAgain">
+                <div class="col-md-12">
+                    <h2>Round {{roundCount}}</h2>
+                </div>
+            </div>
+
+            <form novalidate>
+
+                <div class="row" ng-show="player1Turn" ng-hide="playAgain">
+                    <div class="col-md-4">
+                        <span>Player 1:</span>
+                    </div>
+                    <div class="col-md-4">
+                        {{game.Player1}}
+                    </div>
+                    <div class="col-md-4">
+                        <select name="player1Move" id="player1Move" ng-model="Round.Player1MoveId">
+                            <option ng-repeat="option in availableMoves" value="{{option.Id}}">{{option.Name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row" ng-show="player2Turn" ng-hide="playAgain">
+                    <div class="col-md-4">
+                        <span>Player 2:</span>
+                    </div>
+                    <div class="col-md-4">
+                        {{game.Player2}}
+                    </div>
+                    <div class="col-md-4">
+                        <select name="player2Move" id="player2Move" ng-model="Round.Player2MoveId" value="1">
+                            <option ng-repeat="option in availableMoves" value="{{option.Id}}">{{option.Name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row" ng-hide="playAgain">
+                    <div class="col-md-12">
+                        <button class="btn" ng-click="saveRoundInfo()">Ok</button>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="playAgain">
+                    <div class="col-md-4">
+                        We have a WINNER!!
+                    </div>
+                    <div class="col-md-4">
+                        {{game.Winner}} is the new Emperor!
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn" ng-click="createNewGame()">Play Again</button>
+                    </div>
+                </div>
+                <div ng-hide="playAgain">
+                    <h3>Score</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Round
+                        </div>
+                        <div class="col-md-8">
+                            Winner
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="round in rounds">
+                        <div class="col-md-4">
+                            {{$index + 1}}
+                        </div>
+                        <div class="col-md-8">
+                            <span ng-show="round.WinnerPlayer ==1">{{game.Player1}}</span>
+                            <span ng-show="round.WinnerPlayer ==2">{{game.Player2}}</span>
+                            <span ng-show="round.WinnerPlayer ==0">Tie</span>
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2017- Sara Gomez Application</p>
+        </footer>
+    </div>
+<script src="../../Scripts/angular.min.js"></script>
+<script src="../../Scripts/angular-route.min.js"></script>
+<script src="../app.js"></script>
+<script src="round.js"></script>
+<script src="../Services/baseSvc.js"></script>
+<script src="../Services/gameService.js"></script>
+<script src="../Services/moveServices.js"></script>
+<script src="../Services/roundService.js"></script>
+</body>
+</html>
